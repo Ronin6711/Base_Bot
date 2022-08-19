@@ -8,12 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="config.json" />
     <None Remove="jsconfig.json" />
     <None Remove="support.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="support.json">
+    <Content Include="config.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -27,10 +28,6 @@
     <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0" />
     <PackageReference Include="DSharpPlus.VoiceNext" Version="4.2.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="models\" />
   </ItemGroup>
 
   <ItemGroup>

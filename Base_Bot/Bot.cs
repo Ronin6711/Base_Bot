@@ -1,7 +1,9 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
+using DSharpPlus.Interactivity.Extensions;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
@@ -21,7 +23,7 @@ namespace Base_Bot
         {
             var json = string.Empty;
 
-            using (var fs = File.OpenRead("support.json"))
+            using (var fs = File.OpenRead("config.json"))
             using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
                 json = sr.ReadToEnd();
 
@@ -41,14 +43,20 @@ namespace Base_Bot
 
             var commandsConfig = new CommandsNextConfiguration
             {
-                StringPrefixes = new string[] {configJson.Prefix},
+                StringPrefixes = new string[] { configJson.Prefix },
                 EnableMentionPrefix = true,
                 EnableDms = false,
+                DmHelp = true,
             };
-            
+
+            Client.UseInteractivity(new InteractivityConfiguration
+            {
+                
+            });
+
             Commands = Client.UseCommandsNext(commandsConfig);
 
-            
+            Commands.RegisterCommands<BotCommands>();
 
             await Client.ConnectAsync();
             await Task.Delay(-1);

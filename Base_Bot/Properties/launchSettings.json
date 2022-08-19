@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Base_Bot": {
+      "commandName": "Project"
+    }
+  }
+}

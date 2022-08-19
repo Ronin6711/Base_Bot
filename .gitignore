@@ -363,3 +363,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Base_Bot/support — копия.json
+/Base_Bot/config.json
