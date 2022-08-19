@@ -364,3 +364,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /Base_Bot/support — копия.json
 /Base_Bot/config.json
+/Discord_Bot/configjson.json
