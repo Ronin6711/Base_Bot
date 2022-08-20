@@ -8,7 +8,6 @@ namespace Discord_Bot
 {
     internal class Program
     {
-
         public static Task Main(string[] args) => new Program().MainAsync();
 
         private DiscordSocketClient _client;
@@ -47,14 +46,13 @@ namespace Discord_Bot
         }
         private async Task HandleListRoleCommand(SocketSlashCommand command)
         {
-
-            await command.RespondAsync($"Добавленно {command.Data.Options.Last().Value} поинтов пользователю {command.Data.Options.First().Value}");
+            await command.RespondAsync($"Добавленно {command.Data.Options.Last().Value} поинтов пользователю @{command.Data.Options.First().Type}");
         }
 
         private async Task Client_Ready()
         {
             ulong guildId = 1008457076202295358;
-            var guild = _client.GetGuild(guildId);
+
             var guildCommand = new SlashCommandBuilder()
                 .WithName("add-points")
                 .WithDescription("Добавляет поинты определённому пользователю")

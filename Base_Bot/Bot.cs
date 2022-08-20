@@ -1,6 +1,7 @@
 ﻿using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.SlashCommands;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
@@ -18,6 +19,7 @@ namespace Base_Bot
         public DiscordClient Client { get; private set; }
         public InteractivityExtension Interactivity { get; private set; }
         public CommandsNextExtension Commands { get; private set; }
+        public SlashCommandsExtension SlashCommands { get; private set; }
 
         public async Task RunAsync()
         {
@@ -51,12 +53,14 @@ namespace Base_Bot
 
             Client.UseInteractivity(new InteractivityConfiguration
             {
-                
+               
             });
 
             Commands = Client.UseCommandsNext(commandsConfig);
 
-            Commands.RegisterCommands<BotCommands>();
+            SlashCommands = Client.UseSlashCommands();
+
+            SlashCommands.RegisterCommands<BotCommands>(1008457076202295358);
 
             await Client.ConnectAsync();
             await Task.Delay(-1);
